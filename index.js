@@ -21,9 +21,9 @@ restService.post('/hook', function (req, res) {
              case "smartpaula":
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
                  break;
-            case "pam_sum":
+            case "pam_sum": //calculate PAM aggregate score
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_score']);
+                PAM = Number(requestBody.parameters['pam_score'] + requestBody.contexts['pam_total']);
                 speech += 'pam_sum waarde: ' + PAM;
                 break;
              default:
