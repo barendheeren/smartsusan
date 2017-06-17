@@ -28,7 +28,7 @@ restService.post('/hook', function (req, res) {
                 //    PAM = PAM + Number(requestBody.parameters['pam_score']);
                 //}
                 //speech += 'pam_sum waarde: ' + PAM;
-                speech += 'pam_sum waarde: ' + requestBody.contexts['einde'];
+                speech += 'pam_sum waarde: ' + requestBody.contexts['einde'].name;
                 //speech += requestBody.fulfillment.speech; //text stays the same
                 break;
              default:
