@@ -9,34 +9,20 @@ restService.use(bodyParser.json());
 restService.post('/hook', function (req, res) {
 
     console.log('hook request');
+    var speech = '';
 
-    //   switch(component) {
-    //     case "lights":
-    //         compNumberId = 1;
-    //         break;
-    //     case "patio-lights":
-    //         compNumberId = 2;
-    //         break;
-    //     case "water":
-    //	   compNumberId = 3;
-    //	   break;
-    //     default:
-    //         console.log('Sorry, no component specified');
+      switch(requestBody.result.action) {
+         case "smartsusan":
+             speech += 'Susan actie: ' + requestBody.result.fulfillment.speech + 'voor ' + requestBody.result.parameters;
+            break;
+         case "smartpaula":
+             speech += 'Paula actie: ' + requestBody.result.fulfillment.speech;
+             break;
+         default:
+             speech += 'Sorry, de actie is niet bekend.';
     //	   Call assistant.ask('which component, which state');
-    //    }
-    try {
-        var speech = '';
-
-        if (req.body) {
-            var requestBody = req.body;
-
-            if (requestBody.result.action == 'smartsusan') {
-                speech += 'Susan actie: ' + requestBody.result.fulfillment.speech + 'voor ' + requestBody.result.parameters('geo-city');
-            }
-            if (requestBody.result.action == 'smartpaula') {
-                speech += 'Paula actie: ' + requestBody.result.fulfillment.speech;
-            }
         }
+
         console.log('result: ', speech);
 
         return res.json({
