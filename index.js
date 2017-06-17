@@ -23,7 +23,7 @@ restService.post('/hook', function (req, res) {
                 speech += 'Paula action: ' + requestBody.result.fulfillment.speech;
             }
         }
-    }
+    
 
 
  //   try {
