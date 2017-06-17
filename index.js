@@ -11,16 +11,16 @@ restService.post('/hook', function (req, res) {
     console.log('hook request');
 
     try {
-        var speech = 'empty speech';
+        var speech = '';
 
         if (req.body) {
             var requestBody = req.body;
 
             if (requestBody.result.action == 'smartsusan') {
-                speech += 'Susan action: ' + requestBody.result.fulfillment.speech;
+                speech += 'Susan actie: ' + requestBody.result.fulfillment.speech;
             }
             if (requestBody.result.action == 'smartpaula') {
-                speech += 'Paula action: ' + requestBody.result.fulfillment.speech;
+                speech += 'Paula actie: ' + requestBody.result.fulfillment.speech;
             }
         }
         console.log('result: ', speech);
