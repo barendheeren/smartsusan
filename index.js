@@ -39,7 +39,7 @@ restService.post('/hook', function (req, res) {
                     {
                         "name": "PAM",
                         "parameters": {
-                            "pam_total": PAM 
+                            "pam_total": 15 
                         }, 
                         "lifespan": 1
                     }
