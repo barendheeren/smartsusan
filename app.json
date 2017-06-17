@@ -1,7 +1,7 @@
 {
-  "name": "API.AI webhook demonstration",
-  "description": "API.AI webhook demonstration",
-  "repository": "https://github.com/api-ai/apiai-webhook-sample",
+  "name": "SmartSusan",
+  "description": "API.AI webhook with SmartSusan"
+  "repository": "https://github.com/barendheeren/smartsusan",
   "logo": "http://xvir.github.io/img/apiai.png",
-  "keywords": ["api.ai", "natural language"]
+  "keywords": ["api.ai", "natural language", "smartsusan"]
 }
