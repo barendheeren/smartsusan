@@ -11,28 +11,28 @@ restService.post('/hook', function (req, res) {
     console.log('hook request');
 
     try {
-    var speech = '';
-    var requestBody = req.body.result
+        var speech = '';
+        var requestBody = req.body.result
 
-    switch(requestBody.action) {
-         case "smartsusan":
-             speech += 'Susan actie: ' + requestBody.fulfillment.speech;
-            break;
-         case "smartpaula":
-             speech += 'Paula actie: ' + requestBody.fulfillment.speech;
-             break;
-         default:
-             speech += 'Sorry, de actie is niet bekend.';
-    //	   Call assistant.ask('which component, which state');
-        }
+        switch(requestBody.action) {
+             case "smartsusan":
+                 speech += 'Susan actie: ' + requestBody.parameters.echoText;
+                break;
+             case "smartpaula":
+                 speech += 'Paula actie: ' + requestBody.fulfillment.speech;
+                 break;
+             default:
+                 speech += 'Sorry, de actie is niet bekend.';
+        //	   Call assistant.ask('which component, which state');
+            }
 
-        console.log('result: ', speech);
+            console.log('result: ', speech);
 
-        return res.json({
-            speech: speech,
-            displayText: speech,
-            source: 'smartsusan'
-        });   
+            return res.json({
+                speech: speech,
+                displayText: speech,
+                source: 'smartsusan'
+            });   
 
 
 //   try {
