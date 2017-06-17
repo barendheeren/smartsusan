@@ -21,6 +21,8 @@ restService.post('/hook', function (req, res) {
              case "smartpaula":
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
                  break;
+             case "pam_sum":
+                 speech += 'pam_sum waarde: ' + requestBody.parameters['pam_score']
              default:
                  speech += 'Sorry, de actie is niet bekend.';
         //	   Call assistant.ask('which component, which state');
@@ -33,6 +35,7 @@ restService.post('/hook', function (req, res) {
                 displayText: speech,
                 source: 'smartsusan'
             });   
+
 
 
 //   try {
