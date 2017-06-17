@@ -23,7 +23,7 @@ restService.post('/hook', function (req, res) {
                  break;
             case "pam_sum":
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_score']+Number(requestBody.contexts['pam_total']);
+                PAM = Number(requestBody.parameters['pam_score']);
                 speech += 'pam_sum waarde: ' + PAM;
                 break;
              default:
