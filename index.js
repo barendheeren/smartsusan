@@ -16,7 +16,7 @@ restService.post('/hook', function (req, res) {
 
         switch(requestBody.action) {
              case "smartsusan":
-                 speech += 'Susan actie: ' + req.body.params.id;
+                 speech += 'Susan actie: ' + requestBody.parameters.geo-city;
                 break;
              case "smartpaula":
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
