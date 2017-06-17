@@ -12,10 +12,10 @@ restService.post('/hook', function (req, res) {
     var speech = '';
 
       switch(requestBody.result.action) {
-         case "smartsusan":
-             speech += 'Susan actie: ' + requestBody.result.fulfillment.speech + 'voor ' + requestBody.result.parameters;
+         case 'smartsusan':
+             speech += 'Susan actie: ' + requestBody.result.fulfillment.speech;
             break;
-         case "smartpaula":
+         case 'smartpaula':
              speech += 'Paula actie: ' + requestBody.result.fulfillment.speech;
              break;
          default:
