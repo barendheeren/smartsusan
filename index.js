@@ -23,16 +23,22 @@ restService.post('/hook', function (req, res) {
                 speech += 'Paula action: ' + requestBody.result.fulfillment.speech;
             }
         }
-    
+        console.log('result: ', speech);
+
+        return res.json({
+            speech: speech,
+            displayText: speech,
+            source: 'smartsusan'
+        });   
 
 
- //   try {
- //       var speech = 'empty speech';
+//   try {
+//        var speech = 'empty speech';
 
- //       if (req.body) {
- //           var requestBody = req.body;
+//       if (req.body) {
+//            var requestBody = req.body;
 
- //           if (requestBody.result) {
+//            if (requestBody.result) {
 //                speech = '';
 
 //                if (requestBody.result.fulfillment) {
@@ -40,19 +46,19 @@ restService.post('/hook', function (req, res) {
 //                    speech += ' ';
 //                }
 
- //               if (requestBody.result.action) {
+//                if (requestBody.result.action) {
 //                    speech += 'action: ' + requestBody.result.action;
 //                }
 //            }
 //        }
 
-        console.log('result: ', speech);
+//        console.log('result: ', speech);
 
-        return res.json({
-            speech: speech,
-            displayText: speech,
-            source: 'smartsusan'
-        });
+//        return res.json({
+//            speech: speech,
+//            displayText: speech,
+//            source: 'smartsusan'
+//        });
     } catch (err) {
         console.error("Can't process request", err);
 
