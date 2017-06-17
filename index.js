@@ -31,7 +31,7 @@ restService.post('/hook', function (req, res) {
             var requestBody = req.body;
 
             if (requestBody.result.action == 'smartsusan') {
-                speech += 'Susan actie: ' + requestBody.result.fulfillment.speech + 'voor ' + requestBody.result.parameters(0,1);
+                speech += 'Susan actie: ' + requestBody.result.fulfillment.speech + 'voor ' + requestBody.result.geo-city;
             }
             if (requestBody.result.action == 'smartpaula') {
                 speech += 'Paula actie: ' + requestBody.result.fulfillment.speech;
