@@ -10,8 +10,9 @@ restService.post('/hook', function (req, res) {
 
     console.log('hook request');
     var speech = '';
+    var input_action = requestBody.result.action
 
-      switch(requestBody.result.action) {
+    switch(input_action) {
          case 'smartsusan':
              speech += 'Susan actie: ' + requestBody.result.fulfillment.speech;
             break;
