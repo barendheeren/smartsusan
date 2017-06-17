@@ -24,11 +24,12 @@ restService.post('/hook', function (req, res) {
             case "pam_sum": //calculate PAM aggregate score
                 var PAM = 0;
                 PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
-                if (data.result.contexts['einde']==true) {
-                    PAM = PAM + Number(requestBody.parameters['pam_score']);
-                }
+                //if (data.result.contexts['einde']==true) {
+                //    PAM = PAM + Number(requestBody.parameters['pam_score']);
+                //}
                 //speech += 'pam_sum waarde: ' + PAM;
-                speech += requestBody.fulfillment.speech; //text stays the same
+                speech += 'pam_sum waarde: ' + data.result.contexts['einde'];
+                //speech += requestBody.fulfillment.speech; //text stays the same
                 break;
              default:
                  speech += 'Sorry, de actie is niet bekend.';
