@@ -35,7 +35,15 @@ restService.post('/hook', function (req, res) {
 
             return res.json({
                 speech: speech,
-                parameters: {pam_total: PAM },
+                contextOut: [
+                    {
+                        "name": "PAM",
+                        "parameters": {
+                            "pam_total": PAM 
+                        }, 
+                        "lifespan": 1
+                    }
+                ],
                 displayText: speech,
                 source: 'smartsusan'
             });   
