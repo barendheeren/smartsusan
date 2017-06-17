@@ -16,10 +16,10 @@ restService.post('/hook', function (req, res) {
         if (req.body) {
             var requestBody = req.body;
 
-            if (requestBody.result.action == smartsusan) {
+            if (requestBody.result.action == 'smartsusan') {
                 speech += 'Susan action: ' + requestBody.result.fulfillment.speech;
             }
-            if (requestBody.result.action == smartpaula) {
+            if (requestBody.result.action == 'smartpaula') {
                 speech += 'Paula action: ' + requestBody.result.fulfillment.speech;
             }
         }
