@@ -27,32 +27,39 @@ restService.post('/hook', function (req, res) {
                 //speech += 'pam_sum waarde: ' + PAM;
                 //speech += requestBody.fulfillment.speech; //text stays the same
                 return res.json({
-                    contextOut: [
-                        {
-                            "name": "PAM",
-                            "parameters": {
-                                "pam_total": PAM 
-                            }, 
-                            "lifespan": 1
+                //    contextOut: [
+                //        {
+                //            "name": "PAM",
+                //            "parameters": {
+                //                "pam_total": PAM 
+                //            }, 
+                //            "lifespan": 1
+                //        }
+                //    ],
+                //    source: 'smartsusan'
+                    //});
+                    followupEvent:{
+                        "name":"PAM_calculate",
+                        "data":{
+                            "pam_total":PAM
                         }
-                    ],
-                    source: 'smartsusan'
+                    },
                 });
                 break;
-            case "pam_calculate": //display calculate PAM total score
-                var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_total']);
-                return res.json({
-                    displayText: "test trigger event", 
-                    followupEvent:[{
-                         "name":"PAM_score",
-                         "data":{
-                         "pam_total":PAM
-                      }
-                     }],
-                    source: 'smartsusan'
-                });
-                break;             
+            //case "pam_calculate": //display calculate PAM total score
+            //    var PAM = 0;
+            //    PAM = Number(requestBody.parameters['pam_total']);
+            //    return res.json({
+            //        displayText: "test trigger event", 
+            //        followupEvent:{
+            //             "name":"PAM_calculate",
+            //             "data":{
+            //             "pam_total":PAM
+            //          }
+            //         },
+            //        source: 'smartsusan'
+            //    });
+            //    break;             
             default:
                  speech += 'Sorry, de actie is niet bekend.';
         //	   Call assistant.ask('which component, which state');
