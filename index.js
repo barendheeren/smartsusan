@@ -31,7 +31,7 @@ restService.post('/hook', function (req, res) {
                     //speech += "beide tellen " + requestBody.parameters['pam_score'];
                 }
                 //speech += 'pam_sum waarde: ' + PAM ;
-                speech += requestBody.parameters['pam_score']; 
+                //speech += requestBody.parameters['pam_score']; 
                 return res.json({
                     //speech: speech,
                     //displayText: speech,
@@ -49,7 +49,11 @@ restService.post('/hook', function (req, res) {
                 break;
             case "pam_calculate": //display calculate PAM total score
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
+                if (requestBody.parameters['pam_score'] == "n.v.t.") {
+                    PAM = Number(requestBody.parameters['pam_total']);
+                } else {
+                    PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
+                }
                 return res.json({
                     followupEvent:{
                          "name":"PAM_calculate",
