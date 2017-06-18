@@ -25,8 +25,10 @@ restService.post('/hook', function (req, res) {
                 var PAM = 0;
                 if (requestBody.parameters['pam_score'] == "n.v.t") {
                     PAM = Number(requestBody.parameters['pam_total']);
+                    speech += "eentje tellen" + requestBody.parameters['pam_total'];
                 } else {
                     PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
+                    speech += "beide tellen" + requestBody.parameters['pam_score'];
                 }
                 //speech += 'pam_sum waarde: ' + PAM ;
                 speech += requestBody.parameters['pam_score']; 
