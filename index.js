@@ -44,15 +44,16 @@ restService.post('/hook', function (req, res) {
                 PAM = Number(requestBody.parameters['pam_total']);
                 return res.json({
                     displayText: "test trigger event", 
-                    event:{
-                         "name":"pam_calculate",
+                    followupEvent:{
+                         "name":"PAM_score",
                          "data":{
                          "pam_total":PAM
                       }
                      },
                     source: 'smartsusan'
                 });
-                break;             default:
+                break;             
+            default:
                  speech += 'Sorry, de actie is niet bekend.';
         //	   Call assistant.ask('which component, which state');
             }
