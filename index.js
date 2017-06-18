@@ -24,7 +24,7 @@ restService.post('/hook', function (req, res) {
             case "pam_sum": //calculate PAM aggregate score
                 var PAM = 0;
                 PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
-                //speech += 'pam_sum waarde: ' + PAM;
+                speech += 'pam_sum waarde: ' + PAM;
                 //speech += requestBody.fulfillment.speech; //text stays the same
                 return res.json({
                 //    contextOut: [
@@ -38,12 +38,13 @@ restService.post('/hook', function (req, res) {
                 //    ],
                 //    source: 'smartsusan'
                     //});
-                    followupEvent:{
+                    displayText: speech,
+                    followupEvent:[{
                         "name":"PAM_calculate",
                         "data":{
                             "pam_total":PAM
                         }
-                    },
+                    }],
                 });
                 break;
             //case "pam_calculate": //display calculate PAM total score
