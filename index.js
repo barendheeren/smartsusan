@@ -36,15 +36,15 @@ restService.post('/hook', function (req, res) {
                 //            "lifespan": 1
                 //        }
                 //    ],
-                //    source: 'smartsusan'
                     //});
                     displayText: speech,
-                    followupEvent:[{
+                    followupEvent:{
                         "name":"PAM_calculate",
                         "data":{
                             "pam_total":PAM
                         }
-                    }],
+                    },
+                    source: 'smartsusan'
                 });
                 break;
             //case "pam_calculate": //display calculate PAM total score
