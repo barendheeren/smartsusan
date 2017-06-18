@@ -39,12 +39,12 @@ restService.post('/hook', function (req, res) {
                 //    source: 'smartsusan'
                     //});
                     displayText: speech,
-                    followupEvent:[{
-                        "name":"PAM_calculate",
-                        "data":{
-                            "pam_total":PAM
-                        }
-                    }],
+                    //followupEvent:[{
+                    //    "name":"PAM_calculate",
+                    //    "data":{
+                    //        "pam_total":PAM
+                    //    }
+                    //}],
                 });
                 break;
             //case "pam_calculate": //display calculate PAM total score
