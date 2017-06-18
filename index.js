@@ -25,7 +25,7 @@ restService.post('/hook', function (req, res) {
                 var PAM = 0;
                 PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
                 //speech += 'pam_sum waarde: ' + PAM;
-                speech += requestBody.fulfillment.speech; //text stays the same
+                //speech += requestBody.fulfillment.speech; //text stays the same
                 break;
              default:
                  speech += 'Sorry, de actie is niet bekend.';
@@ -35,7 +35,7 @@ restService.post('/hook', function (req, res) {
             console.log('result: ', speech);
 
             return res.json({
-                speech: speech,
+                //speech: speech,
                 contextOut: [
                     {
                         "name": "PAM",
@@ -45,7 +45,7 @@ restService.post('/hook', function (req, res) {
                         "lifespan": 1
                     }
                 ],
-                displayText: speech,
+                //displayText: speech,
 //                event:{
  //                   "name":"pam_calculate",
  //                   "data":{
