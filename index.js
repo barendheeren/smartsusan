@@ -26,8 +26,32 @@ restService.post('/hook', function (req, res) {
                 PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
                 //speech += 'pam_sum waarde: ' + PAM;
                 //speech += requestBody.fulfillment.speech; //text stays the same
+                return res.json({
+                    contextOut: [
+                        {
+                            "name": "PAM",
+                            "parameters": {
+                                "pam_total": PAM 
+                            }, 
+                            "lifespan": 1
+                        }
+                    ],
+                    source: 'smartsusan'
+                });
                 break;
-             default:
+            case "pam_calculate": //display calculate PAM total score
+                var PAM = 0;
+                PAM = Number(requestBody.parameters['pam_total']);
+                return res.json({
+                     event:[{
+                         "name":"pam_calculate",
+                         "data":{
+                         "pam_total":PAM
+                      }
+                    }],
+                    source: 'smartsusan'
+                });
+                break;             default:
                  speech += 'Sorry, de actie is niet bekend.';
         //	   Call assistant.ask('which component, which state');
             }
@@ -36,15 +60,15 @@ restService.post('/hook', function (req, res) {
 
             return res.json({
                 //speech: speech,
-                contextOut: [
-                    {
-                        "name": "PAM",
-                        "parameters": {
-                            "pam_total": PAM 
-                        }, 
-                        "lifespan": 1
-                    }
-                ],
+               // contextOut: [
+               //     {
+               //         "name": "PAM",
+              //          "parameters": {
+               //             "pam_total": PAM 
+                //        }, 
+              //          "lifespan": 1
+               //     }
+              //  ],
                 //displayText: speech,
 //                event:{
  //                   "name":"pam_calculate",
@@ -52,8 +76,8 @@ restService.post('/hook', function (req, res) {
  //                       "pam_total":PAM
  //                       }
  //               },
-                source: 'smartsusan'
-            });   
+ //               source: 'smartsusan'
+ //           });   
 
 
 
