@@ -43,13 +43,13 @@ restService.post('/hook', function (req, res) {
                 var PAM = 0;
                 PAM = Number(requestBody.parameters['pam_total']);
                 return res.json({
-                     event:[{
+                    displayText: "test trigger event", 
+                    event:[{
                          "name":"pam_calculate",
                          "data":{
                          "pam_total":PAM
                       }
                      }],
-                    displayText: "test trigger event",
                     source: 'smartsusan'
                 });
                 break;             default:
