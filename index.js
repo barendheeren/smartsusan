@@ -41,7 +41,7 @@ restService.post('/hook', function (req, res) {
                 break;
             case "pam_calculate": //display calculate PAM total score
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_total']);
+                PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
                 return res.json({
                     //displayText: "test trigger event", 
                     followupEvent:{
