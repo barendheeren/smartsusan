@@ -48,7 +48,8 @@ restService.post('/hook', function (req, res) {
                          "data":{
                          "pam_total":PAM
                       }
-                    }],
+                     }],
+                    displayText: "test trigger event",
                     source: 'smartsusan'
                 });
                 break;             default:
