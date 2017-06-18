@@ -46,12 +46,12 @@ restService.post('/hook', function (req, res) {
                     }
                 ],
                 displayText: speech,
-                event:{
-                    "name":"pam_calculate",
-                    "data":{
-                        "pam_total":PAM
-                        }
-                },
+//                event:{
+ //                   "name":"pam_calculate",
+ //                   "data":{
+ //                       "pam_total":PAM
+ //                       }
+ //               },
                 source: 'smartsusan'
             });   
 
