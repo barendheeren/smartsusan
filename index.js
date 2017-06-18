@@ -23,7 +23,7 @@ restService.post('/hook', function (req, res) {
                  break;
             case "pam_sum": //calculate PAM aggregate score
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
+                PAM = Number.parseInt(requestBody.parameters['pam_score']) + Number.parseInt(requestBody.parameters['pam_total']);
                 //speech += 'pam_sum waarde: ' + PAM;
                 //speech += requestBody.fulfillment.speech; //text stays the same
                 return res.json({
@@ -41,12 +41,12 @@ restService.post('/hook', function (req, res) {
                 break;
             case "pam_calculate": //display calculate PAM total score
                 var PAM = 0;
-                PAM = Number(requestBody.parameters['pam_score']) + Number(requestBody.parameters['pam_total']);
+                PAM = Number.parseInt(requestBody.parameters['pam_score']) + Number.parseInt(requestBody.parameters['pam_total']);
                 return res.json({
                     followupEvent:{
                          "name":"PAM_calculate",
                          "data":{
-                             "pam_total": parseInt(PAM)
+                             "pam_total": PAM
                       }
                      },
                     source: 'smartsusan'
