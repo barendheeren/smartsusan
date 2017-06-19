@@ -23,15 +23,13 @@ restService.post('/hook', function (req, res) {
                  break;
             case "pam_sum": //calculate PAM aggregate score
                 var PAM = 0;
-                if (isNaN(parseInt(requestBody.parameters['pam_score']))) {
+                if (isNaN(parseInt(requestBody.parameters['pam_score']))) { //option n.v.t. returns NaN, rest a value
                     PAM = parseInt(requestBody.parameters['pam_total']);
                     //speech += "eentje tellen " + requestBody.parameters['pam_total'];
                 } else {
                     PAM = parseInt(requestBody.parameters['pam_score']) + parseInt(requestBody.parameters['pam_total']);
                     //speech += "beide tellen " + requestBody.parameters['pam_score'];
                 }
-                //speech += 'pam_sum waarde: ' + PAM ;
-                //speech += requestBody.parameters['pam_score']; 
                 return res.json({
                     //speech: speech,
                     //displayText: speech,
