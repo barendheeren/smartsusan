@@ -52,7 +52,6 @@ restService.post('/hook', function (req, res) {
                 } else {
                     PAM = parseInt(requestBody.parameters['pam_score']) + parseInt(requestBody.parameters['pam_total']);
                 }
-                PAM.toString();
                 return res.json({
                     followupEvent:{
                          "name":"PAM_calculate",
