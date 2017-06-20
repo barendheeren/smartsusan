@@ -9,4 +9,4 @@ More info about Api.ai webhooks could be found here:
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 # What does the service do?
-Eerste stap met `resolvedQuery` and `action` velden van de Api.ai JSON reponse and echoes them back in into `speech` and `displayTest` fields in the fulfillment JSON.
+Eerste stap met integratie Api.ai met Heroku voor chat interactie.
