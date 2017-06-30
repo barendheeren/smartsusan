@@ -22,12 +22,13 @@ restService.post('/hook', function (req, res) {
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
                  break;
             case "who_are_you": //check if user is known 
-                speech += 'Jij bent: ' + req.body.sessionId + '. ' + requestBody.fulfillment.speech;
-                //speech += requestBody.fulfillment.speech + 'Barend';
+                speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
                 return res.json({
+                    recipient:"6053d27e-1a30-407e-a0aa-bf0693d0b1e6",
                     speech: speech,
                     displayText: speech,
-                    source: 'smartsusan'
+                    sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
+                    source: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6'
                 });
                 break;
             case "pam_sum": //calculate PAM score
