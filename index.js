@@ -29,6 +29,14 @@ restService.post('/hook', function (req, res) {
                     source: 'smartsusan'
                 });
                 break;
+            case "input.welcome": //check if user is known 
+                speech += 'Jij bent: ' + '. ' + requestBody.fulfillment.speech;
+                return res.json({
+                    speech: speech,
+                    displayText: speech,
+                    source: 'smartsusan'
+                });
+                break;
             case "pam_sum": //calculate PAM score
                 var PAM = 0;
                 if (isNaN(parseInt(requestBody.parameters['pam_score']))) { //option n.v.t. returns NaN, rest a value
