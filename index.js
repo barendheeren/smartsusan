@@ -24,7 +24,7 @@ restService.post('/hook', function (req, res) {
             case "who_are_you": //check if user is known 
                 speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
                 return res.json({
-                    recipient:"6053d27e-1a30-407e-a0aa-bf0693d0b1e6",
+                    recipient:{"id": "6053d27e-1a30-407e-a0aa-bf0693d0b1e6"},
                     speech: speech,
                     displayText: speech,
                     sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
