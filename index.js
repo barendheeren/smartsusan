@@ -22,7 +22,7 @@ restService.post('/hook', function (req, res) {
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
                  break;
             case "who_are_you": //check if user is known 
-                speech += 'Jij bent: ' + req.body.sessionId + '. ' + requestBody.fulfillment.speech;
+                speech += 'Jij bent: ' + '. ' + requestBody.fulfillment.speech;
                 //speech += requestBody.fulfillment.speech + 'Barend';
                 return res.json({
                     speech: speech,
