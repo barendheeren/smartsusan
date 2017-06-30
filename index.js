@@ -21,16 +21,8 @@ restService.post('/hook', function (req, res) {
              case "smartpaula":
                  speech += 'Paula actie: ' + requestBody.fulfillment.speech;
                  break;
-            case "input.welcome": //check if user is known 
+            case "who_are_you": //check if user is known 
                 speech += 'Jij bent: ' + requestBody.sessionId + '. ' + requestBody.fulfillment.speech;
-                return res.json({
-                    speech: speech,
-                    displayText: speech,
-                    source: 'smartsusan'
-                });
-                break;
-            case "input.welcome": //check if user is known 
-                speech += 'Jij bent: ' + '. ' + requestBody.fulfillment.speech;
                 return res.json({
                     speech: speech,
                     displayText: speech,
