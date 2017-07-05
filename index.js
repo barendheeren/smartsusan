@@ -15,10 +15,11 @@ restService.get('/', function (req, res) {
 });
 // Server frontpage
 restService.get('/hook', function (req, res) {
-    if (req.query['hub.verify_token'] === 'testbot_verify_token') {
+    //if (req.query['hub.verify_token'] === 'testbot_verify_token') {
+    if (req.query['hub.verify_token'] === 'paula') {
         res.send(req.query['hub.challenge']);
     } else {
-        res.send('Invalid verify token ' + PAGE_ACCESS_TOKEN);
+        res.send('Invalid verify token ' + hub.verify_token);
     }
 });
 
