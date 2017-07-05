@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const restService = express();
-//restService.listen((process.env.PORT || 5000));
+restService.listen((process.env.PORT || 5000));
 restService.use(bodyParser.urlencoded({extended: false}));
 restService.use(bodyParser.json());
 
