@@ -19,7 +19,7 @@ restService.get('/hook', function (req, res) {
     if (req.query['hub.verify_token'] === 'paula') {
         res.send(req.query['hub.challenge']);
     } else {
-        res.send('Invalid verify token ' + hub.verify_token);
+        res.send('Invalid verify token ' + req.query['hub.verify_token']);
     }
 });
 

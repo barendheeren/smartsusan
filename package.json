@@ -1,5 +1,5 @@
 {
-  "name": "SmartSusan",
+  "name": "smartsusan",
   "version": "1.0.0",
   "description": "Personal companion",
   "main": "index.js",
@@ -8,10 +8,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Barend Heeren <b.heeren@zonnet.nl> (https://api.ai)",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "request": "^2.81.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barendheeren/smartsusan/"
+  },
+  "keywords": [
+    "companion",
+    "diabetestype2"
+  ]
 }
