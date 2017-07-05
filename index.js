@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const restService = express();
-restService.listen((process.env.PORT || 5000));
+//restService.listen((process.env.PORT || 5000));
 restService.use(bodyParser.urlencoded({extended: false}));
 restService.use(bodyParser.json());
 
@@ -56,24 +56,24 @@ restService.post('/hook', function (req, res) {
             case "who_are_you": //check if user is known 
                 //restService.use(bodyParser.urlencoded({ extended: false }));
                 //restService.listen((process.env.PORT || 3000));
-                //var events = req.body.entry[0].messaging;
-                //speech += 'Jij bent: ' + req.body.sender.id + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
-                //for (i = 0; i < events.length; i++) {
-                //    var event = events[i];
-                //    if (event.message && event.message.text) {
-                //        sendMessage(req.body.result.sender.id, { text: "Echo: " + req.body.result.sender.id });
-                //    }
-                //}
-                //return res.sendStatus(200);
+                var events = req.body.entry[0].messaging;
+                speech += 'Jij bent: ' + req.body.sender.id;
+                for (i = 0; i < events.length; i++) {
+                    var event = events[i];
+                    if (event.message && event.message.text) {
+                        sendMessage(req.body.result.sender.id, { text: "Echo: " + req.body.result.sender.id });
+                    }
+                }
+                return res.sendStatus(200);
        
-                speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+                //speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
 
-                return res.json({
-                    speech: speech,
-                    displayText: speech,
-                    //sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
-                    source: 'smartsusan'
-                });
+                //return res.json({
+                //    speech: speech,
+                //    displayText: speech,
+                //    sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
+                //    source: 'smartsusan'
+                //});
                 break;
             case "pam_sum": //calculate PAM score
                 var PAM = 0;
