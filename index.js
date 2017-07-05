@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const restService = express();
-restService.use(bodyParser.json());
 //restService.listen((process.env.PORT || 5000));
+restService.use(bodyParser.urlencoded({extended: false}));
+restService.use(bodyParser.json());
 
 // Server frontpage
 restService.get('/', function (req, res) {
