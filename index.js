@@ -2,11 +2,44 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const request = require('request');
 
 const restService = express();
 restService.use(bodyParser.json());
+//restService.listen((process.env.PORT || 5000));
+
+// Server frontpage
+restService.get('/', function (req, res) {
+    res.send('This is Susan, your companion.');
+});
+// Server frontpage
+restService.get('/hook', function (req, res) {
+    if (req.query['hub.verify_token'] === 'paula') {
+        res.send(req.query['hub.challenge']);
+    } else {
+        res.send('Invalid verify token');
+    }
+});
 
 restService.post('/hook', function (req, res) {
+
+    function sendMessage(recipientId, message) {
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+            method: 'POST',
+            json: {
+                recipient: { id: recipientId },
+                message: message,
+            }
+        }, function (error, response, body) {
+            if (error) {
+                console.log('Error sending message: ', error);
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error);
+            }
+        });
+    };
 
     console.log('hook request');
 
@@ -18,17 +51,26 @@ restService.post('/hook', function (req, res) {
              case "smartsusan":
                  speech += 'Susan actie: ' + requestBody.parameters['geo-city'].length;
                 break;
-             case "smartpaula":
-                 speech += 'Paula actie: ' + requestBody.fulfillment.speech;
-                 break;
             case "who_are_you": //check if user is known 
+                //restService.use(bodyParser.urlencoded({ extended: false }));
+                //restService.listen((process.env.PORT || 3000));
+                //var events = req.body.entry[0].messaging;
+                //speech += 'Jij bent: ' + req.body.sender.id + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+                //for (i = 0; i < events.length; i++) {
+                //    var event = events[i];
+                //    if (event.message && event.message.text) {
+                //        sendMessage(req.body.result.sender.id, { text: "Echo: " + req.body.result.sender.id });
+                //    }
+                //}
+                //return res.sendStatus(200);
+       
                 speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+
                 return res.json({
-                    recipient:{"id": "6053d27e-1a30-407e-a0aa-bf0693d0b1e6"},
                     speech: speech,
                     displayText: speech,
-                    sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
-                    source: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6'
+                    //sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
+                    source: 'smartsusan'
                 });
                 break;
             case "pam_sum": //calculate PAM score
@@ -79,56 +121,7 @@ restService.post('/hook', function (req, res) {
 
             console.log('result: ', speech);
 
-            //return res.json({
-                //speech: speech,
-               // contextOut: [
-               //     {
-               //         "name": "PAM",
-              //          "parameters": {
-               //             "pam_total": PAM 
-                //        }, 
-              //          "lifespan": 1
-               //     }
-              //  ],
-                //displayText: speech,
-//                event:{
- //                   "name":"pam_calculate",
- //                   "data":{
- //                       "pam_total":PAM
- //                       }
- //               },
- //               source: 'smartsusan'
- //           });   
 
-
-
-//   try {
-//        var speech = 'empty speech';
-
-//       if (req.body) {
-//            var requestBody = req.body;
-
-//            if (requestBody.result) {
-//                speech = '';
-
-//                if (requestBody.result.fulfillment) {
-//                    speech += requestBody.result.fulfillment.speech + 'Barend';
-//                    speech += ' ';
-//                }
-
-//                if (requestBody.result.action) {
-//                    speech += 'action: ' + requestBody.result.action;
-//                }
-//            }
-//        }
-
-//        console.log('result: ', speech);
-
-//        return res.json({
-//            speech: speech,
-//            displayText: speech,
-//            source: 'smartsusan'
-//        });
     } catch (err) {
         console.error("Can't process request", err);
 

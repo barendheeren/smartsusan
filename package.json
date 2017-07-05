@@ -1,7 +1,7 @@
 {
   "name": "SmartSusan",
   "version": "1.0.0",
-  "description": "Webhook sample",
+  "description": "Personal companion",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,7 +10,8 @@
   "author": "Barend Heeren <b.heeren@zonnet.nl> (https://api.ai)",
   "license": "Apache 2.0",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "request": "^2.81.0"
   }
 }
