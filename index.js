@@ -59,16 +59,17 @@ restService.post('/hook', function (req, res) {
             case "who_are_you": //check if user is known 
                 //restService.use(bodyParser.urlencoded({ extended: false }));
                 //restService.listen((process.env.PORT || 5000));
-                //var events = req.body.entry[0].messaging;
-                //for (i = 0; i < events.length; i++) {
-                    //var event = events[i];
+                var events = req.body.entry[0].messaging;
+                for (i = 0; i < events.length; i++) {
+                    var event = events[i];
                     //if (event.message && event.message.text) {
                         //sendMessage(req.body.result.sender.id, { text: "Gebruiker " + req.body.result.sender.id + " zei: " + event.message.text });
                     //}
-                //}
+                }
                 //return res.sendStatus(200);
        
-                speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+                //speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+                speech += 'Jij bent: ' + requestBody.sender.id + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
 
                 return res.json({
                     speech: speech,
