@@ -17,10 +17,10 @@ restService.get('/', function (req, res) {
 // Server frontpage
 restService.get('/hook', function (req, res) {
     //if (req.query['hub.verify_token'] === 'testbot_verify_token') {
-    if (req.query['hub.verify_token'] === 'paula') {
+    if (req.query['hub.FB_VERIFY_TOKEN'] === 'paula') {
         res.send(req.query['hub.challenge']);
     } else {
-        res.send('Invalid verify token ' + req.query['hub.verify_token']);
+        res.send('Invalid verify token');
     }
 });
 
@@ -28,7 +28,7 @@ restService.get('/hook', function (req, res) {
 function sendMessage(recipientId, message) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+        qs: { access_token: process.env.FB_PAGE_ACCESS_TOKEN },
         method: 'POST',
         json: {
             //recipient: { id: frontofficeid },
@@ -58,7 +58,7 @@ restService.post('/hook', function (req, res) {
                 break;
             case "who_are_you": //check if user is known 
                 //restService.use(bodyParser.urlencoded({ extended: false }));
-                //restService.listen((process.env.PORT || 3000));
+                restService.listen((process.env.PORT || 5000));
                 var events = req.body.entry[0].messaging;
                 //speech += 'Jij bent: ' + req.body.sender.id;
                 for (i = 0; i < events.length; i++) {
