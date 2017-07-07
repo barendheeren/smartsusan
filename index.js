@@ -68,7 +68,7 @@ restService.post('/hook', function (req, res) {
                 //}
                 //return res.sendStatus(200);
        
-                speech += 'Jij bent: ' + req.body.sessionid + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
+                speech += 'Jij bent: ' + req.body.sessionId + '. Ik ben Paula. ' + requestBody.fulfillment.speech;
 
                 return res.json({
                     speech: speech,
