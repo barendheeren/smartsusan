@@ -62,9 +62,9 @@ restService.post('/hook', function (req, res) {
                 var events = req.body.entry[0].messaging;
                 for (i = 0; i < events.length; i++) {
                     var event = events[i];
-                    //if (event.message && event.message.text) {
+                    if (event.message && event.message.text) {
                         //sendMessage(req.body.result.sender.id, { text: "Gebruiker " + req.body.result.sender.id + " zei: " + event.message.text });
-                    //}
+                    }
                 }
                 //return res.sendStatus(200);
        
@@ -74,7 +74,6 @@ restService.post('/hook', function (req, res) {
                 return res.json({
                     speech: speech,
                     displayText: speech,
-                    //sessionId: '6053d27e-1a30-407e-a0aa-bf0693d0b1e6',
                     source: 'smartsusan'
                 });
                 break;
