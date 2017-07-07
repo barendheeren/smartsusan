@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const frontofficeid = 1533050426761050;
 
 const restService = express();
 //restService.listen((process.env.PORT || 5000));
@@ -23,25 +24,26 @@ restService.get('/hook', function (req, res) {
     }
 });
 
-restService.post('/hook', function (req, res) {
+//send message to other fb messenger recipient
+function sendMessage(recipientId, message) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+        method: 'POST',
+        json: {
+            recipient: { id: frontofficeid },
+            message: message,
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
 
-    function sendMessage(recipientId, message) {
-        request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
-            method: 'POST',
-            json: {
-                recipient: { id: recipientId },
-                message: message,
-            }
-        }, function (error, response, body) {
-            if (error) {
-                console.log('Error sending message: ', error);
-            } else if (response.body.error) {
-                console.log('Error: ', response.body.error);
-            }
-        });
-    };
+restService.post('/hook', function (req, res) {
 
     console.log('hook request');
 
@@ -57,11 +59,11 @@ restService.post('/hook', function (req, res) {
                 //restService.use(bodyParser.urlencoded({ extended: false }));
                 //restService.listen((process.env.PORT || 3000));
                 var events = req.body.entry[0].messaging;
-                speech += 'Jij bent: ' + req.body.sender.id;
+                //speech += 'Jij bent: ' + req.body.sender.id;
                 for (i = 0; i < events.length; i++) {
                     var event = events[i];
                     if (event.message && event.message.text) {
-                        sendMessage(req.body.result.sender.id, { text: "Echo: " + req.body.result.sender.id });
+                        sendMessage(req.body.result.sender.id, { text: "Gebruiker " + req.body.result.sender.id + " zei: " + event.message.text });
                     }
                 }
                 return res.sendStatus(200);
